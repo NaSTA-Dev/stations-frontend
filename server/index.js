@@ -19,8 +19,6 @@ const __TEST__ = process.env.NODE_ENV === 'test'
 
 if (__PROD__ || __TEST__) {
   app.use(morgan('combined'))
-  app.use(helmet())
-  app.use(hpp())
   app.use(compression())
   if (__PROD__) {
     assets = require('../assets.json')
