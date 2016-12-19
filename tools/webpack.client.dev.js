@@ -26,6 +26,13 @@ module.exports = {
     path: CLIENT_OUTPUT
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'standard',
+        exclude: /(node_modules)/
+      }
+	  ],
     loaders: [
       {
         test: /\.(js|jsx)$/,
@@ -40,6 +47,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
+  },
+  standard: {
+    parser: 'babel-eslint'
   },
   plugins: [
     new webpack.DefinePlugin({
