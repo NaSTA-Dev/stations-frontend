@@ -42,6 +42,8 @@
     "react-router": "^2.0.0",
     "redial": "^0.4.1",
     "source-map-support": "^0.4.0",
+    "standard": "^8.6.0",
+    "standard-loader": "^5.0.0",
     "swig": "^1.4.2",
     "throng": "^4.0.0",
     "webpack": "^1.13.1",
@@ -51,5 +53,8 @@
   "devDependencies": {},
   "engines": {
     "node": "6.2.2"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
