@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 class Login extends React.Component {
 
-  render() {
+  render () {
     return (
       <h2>Hello World</h2>
     )
   }
 }
 
-export default Login;
+export default Login

@@ -11,11 +11,13 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../tools/webpack.client.dev'
 import { compileDev, startDev } from '../tools/dx'
 
-const app  = express();
-const Swig = new swig.Swig();
+const app = express()
+const Swig = new swig.Swig()
 
 const __PROD__ = process.env.NODE_ENV === 'production'
 const __TEST__ = process.env.NODE_ENV === 'test'
+
+let assets
 
 if (__PROD__ || __TEST__) {
   app.use(morgan('combined'))
@@ -37,17 +39,17 @@ if (__PROD__ || __TEST__) {
 
 app.disable('x-powered-by')
 app.engine('html', Swig.renderFile)
-app.set('view engine', 'html');
+app.set('view engine', 'html')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(express.static('public'))
 
-app.get('/', function(req, res) {
-  res.render('index', { 
-    vendorjs:  __PROD__ ? assets.vendor.js : '/vendor.js',
+app.get('/', function (req, res) {
+  res.render('index', {
+    vendorjs: __PROD__ ? assets.vendor.js : '/vendor.js',
     bundlejs: __PROD__ ? assets.main.js : '/main.js'
-  });
-});
+  })
+})
 
 const server = http.createServer(app)
 
